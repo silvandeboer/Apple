@@ -12,6 +12,7 @@ import java.util.List;
 
 /**
  * Created by Silvan on 23.05.2016.
+ * TODO: store scores as integers
  */
 public class DatabaseHandler extends SQLiteOpenHelper {
 
@@ -20,12 +21,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     // Database Name
-    private static final String DATABASE_NAME = "database";
+    private static final String DATABASE_NAME = "database2";
 
-    // Contacts table name
-    private static final String TABLE_RECIPES = "recipesTable";
+    // Recipe table name
+    private static final String TABLE_RECIPES = "recipesTable2";
 
-    // Contacts Table Columns names
+    // Recipes Table Columns names
     private static final String KEY_ID = "id";
     private static final String KEY_NAME = "name";
     private static final String KEY_TYPE = "type";
@@ -50,7 +51,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         //Create table, if it already existed it'll "open" it
-        //TODO: check whether "INT" works
         String CREATE_RECIPES_TABLE = "CREATE TABLE " + TABLE_RECIPES + "("
                 + KEY_ID + " INTEGER PRIMARY KEY,"
                 + KEY_NAME + " TEXT,"
@@ -59,13 +59,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_INST + " TEXT,"
                 + KEY_TAGS + " TEXT,"
                 + KEY_IMAG + " TEXT,"
-                + KEY_ENVI + " INT,"
-                + KEY_WATE + " INT,"
-                + KEY_CARB + " INT,"
-                + KEY_TIME + " INT,"
-                + KEY_DIFF + " INT,"
-                + KEY_PRIC + " INT,"
-                + KEY_RATI + " INT"  + ")";
+                + KEY_ENVI + " TEXT,"
+                + KEY_WATE + " TEXT,"
+                + KEY_CARB + " TEXT,"
+                + KEY_TIME + " TEXT,"
+                + KEY_DIFF + " TEXT,"
+                + KEY_PRIC + " TEXT,"
+                + KEY_RATI + " TEXT"  + ")";
         db.execSQL(CREATE_RECIPES_TABLE);
 
 
@@ -130,9 +130,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         if (cursor != null)
             cursor.moveToFirst();
 
-        //TODO: not sure whether the int part works (cursor.getInt(0) instead of Integer.parseInt(cursor.getString(0)), where is id?)
         RecipeData recipe = new RecipeData(Integer.parseInt(cursor.getString(0)),
-                cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getInt(7), cursor.getInt(8), cursor.getInt(9), cursor.getInt(10), cursor.getInt(11), cursor.getInt(12), cursor.getInt(13));
+                cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8), cursor.getString(9), cursor.getString(10), cursor.getString(11), cursor.getString(12), cursor.getString(13));
         // return contact
         return recipe;
     }
@@ -147,7 +146,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         // looping through all rows and adding to list
-        //TODO: still not sure whether the int thing works or whether I have to do a parse thing
         if (cursor.moveToFirst()) {
             do {
                 RecipeData recipe = new RecipeData();
@@ -158,13 +156,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 recipe.setInstructions(cursor.getString(4));
                 recipe.setTags(cursor.getString(5));
                 recipe.setImageRef(cursor.getString(6));
-                recipe.setEnvironmentalScore(cursor.getInt(7));
-                recipe.setWaterfpScore(cursor.getInt(8));
-                recipe.setCarbonfpScore(cursor.getInt(9));
-                recipe.setTimeScore(cursor.getInt(10));
-                recipe.setDifficultyScore(cursor.getInt(11));
-                recipe.setPriceScore(cursor.getInt(12));
-                recipe.setRatingScore(cursor.getInt(13));
+                recipe.setEnvironmentalScore(cursor.getString(7));
+                recipe.setWaterfpScore(cursor.getString(8));
+                recipe.setCarbonfpScore(cursor.getString(9));
+                recipe.setTimeScore(cursor.getString(10));
+                recipe.setDifficultyScore(cursor.getString(11));
+                recipe.setPriceScore(cursor.getString(12));
+                recipe.setRatingScore(cursor.getString(13));
                 // Adding recipe to list
                 contactList.add(recipe);
             } while (cursor.moveToNext());
