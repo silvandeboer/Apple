@@ -12,13 +12,13 @@ public class RecipeData {
     String _instructions;
     String _tags;
     String _image_ref;
-    int _environmental_score;
-    int _waterfp_score;
-    int _carbonfp_score;
-    int _time_score;
-    int _difficulty_score;
-    int _price_score;
-    int _rating_score;
+    String _environmental_score;
+    String _waterfp_score;
+    String _carbonfp_score;
+    String _time_score;
+    String _difficulty_score;
+    String _price_score;
+    String _rating_score;
 
 
     // Empty constructor
@@ -26,7 +26,7 @@ public class RecipeData {
 
     }
     // constructor
-    public RecipeData(int id, String name, String type, String ingredients, String instructions, String tags, String image_ref, int environment_score, int waterfp_score, int carbonfp_score, int time_score, int difficulty_score, int price_score, int rating_score){
+    public RecipeData(int id, String name, String type, String ingredients, String instructions, String tags, String image_ref, String environment_score, String waterfp_score, String carbonfp_score, String time_score, String difficulty_score, String price_score, String rating_score){
         this._id = id;
         this._name = name;
         this._type = type;
@@ -45,7 +45,7 @@ public class RecipeData {
         }
 
     // constructor
-    public RecipeData(String name, String type, String ingredients, String instructions, String tags, String image_ref, int environment_score, int waterfp_score, int carbonfp_score, int time_score, int difficulty_score, int price_score, int rating_score){
+    public RecipeData(String name, String type, String ingredients, String instructions, String tags, String image_ref, String environment_score, String waterfp_score, String carbonfp_score, String time_score, String difficulty_score, String price_score, String rating_score){
         this._name = name;
         this._type = type;
         this._ingredients = ingredients;
@@ -125,65 +125,65 @@ public class RecipeData {
     }
 
     // getting environmental score
-    public int getEnvironmentalScore(){
+    public String getEnvironmentalScore(){
         return this._environmental_score;
     }
 
-    public void setEnvironmentalScore(int environmentalScore) {
+    public void setEnvironmentalScore(String environmentalScore) {
         this._environmental_score = environmentalScore;
     }
 
     // getting water footprint score
-    public int getWaterfpScore(){
+    public String getWaterfpScore(){
         return this._waterfp_score;
     }
 
-    public void setWaterfpScore(int waterfpScore) {
+    public void setWaterfpScore(String waterfpScore) {
         this._waterfp_score = waterfpScore;
     }
 
     // getting carbon footprint score
-    public int getCarbonfpScore(){
+    public String getCarbonfpScore(){
         return this._carbonfp_score;
     }
 
-    public void setCarbonfpScore(int carbonfpScore) {
+    public void setCarbonfpScore(String carbonfpScore) {
         this._carbonfp_score = carbonfpScore;
     }
 
     // getting time score
-    public int getTimeScore(){
+    public String getTimeScore(){
         return this._time_score;
     }
 
-    public void setTimeScore(int timeScore) {
+    public void setTimeScore(String timeScore) {
         this._time_score = timeScore;
     }
 
     // getting difficulty score
-    public int getDifficultyScore(){
+    public String getDifficultyScore(){
         return this._difficulty_score;
     }
 
-    public void setDifficultyScore(int difficultyScore) {
+    public void setDifficultyScore(String difficultyScore) {
         this._difficulty_score = difficultyScore;
     }
 
     // getting price score
-    public int getPriceScore(){
+    public String getPriceScore(){
         return this._price_score;
     }
 
-    public void setPriceScore(int priceScore) {
+    public void setPriceScore(String priceScore) {
         this._price_score = priceScore;
     }
 
     // getting rating score
-    public int getRatingScore(){
+    public String getRatingScore(){
         return this._rating_score;
     }
 
-    public void setRatingScore(int ratingScore) {
+    public void setRatingScore(String ratingScore) {
         this._rating_score = ratingScore;
     }
 
