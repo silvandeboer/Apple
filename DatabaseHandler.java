@@ -1,4 +1,4 @@
-package atlas.databasetest;
+package atlas.apple;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -12,6 +12,7 @@ import java.util.List;
 
 /**
  * Created by Silvan on 23.05.2016.
+ * This class is used to define the database.
  * TODO: store scores as integers
  */
 public class DatabaseHandler extends SQLiteOpenHelper {
@@ -81,6 +82,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Create tables again
         onCreate(db);
     }
+
+    ///TODO: Silvan tries out stuff here
+    //public SQLiteDatabase getDatabase(){
+    //    return this.getWritableDatabase();
+    //}
 
     // Adding new recipe
     public void addRecipe(RecipeData recipe) {
