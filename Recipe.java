@@ -97,13 +97,12 @@ public class Recipe extends AppCompatActivity {
          * fragment.
          */
 
+        public PlaceholderFragment() {
+        }
+
         private static final String ARG_RECIPE_NAME = "recipename";
         private static final String ARG_EXTENT = "extent";
         private static final String ARG_INGREDIENTS = "ingredients";
-
-
-        //public PlaceholderFragment() {
-        //}
 
         /**
          * Returns a new instance of this fragment for the given section
