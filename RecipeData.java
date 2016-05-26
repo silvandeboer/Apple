@@ -1,7 +1,10 @@
-package atlas.databasetest;
+package atlas.apple;
 
 /**
  * Created by Silvan on 23.05.2016.
+ * This class describes the "recipe object", i.e. a thing that contains all info of one recipe.
+ * If you obtain a recipe from the database, it will be a RecipeData object. All functions
+ * defined below can be used, e.g. getName().
  */
 public class RecipeData {
     //private variables
@@ -42,7 +45,7 @@ public class RecipeData {
         this._price_score = price_score;
         this._rating_score = rating_score;
 
-        }
+    }
 
     // constructor
     public RecipeData(String name, String type, String ingredients, String instructions, String tags, String image_ref, String environment_score, String waterfp_score, String carbonfp_score, String time_score, String difficulty_score, String price_score, String rating_score){
