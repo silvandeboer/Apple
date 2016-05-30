@@ -10,13 +10,20 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.database.sqlite.*;
 
 import android.widget.TextView;
+
+import java.util.Arrays;
+import java.util.List;
+
+import atlas.apple.R;
 
 public class Recipe extends AppCompatActivity {
 
@@ -35,10 +42,15 @@ public class Recipe extends AppCompatActivity {
      */
     private ViewPager mViewPager;
 
+    //The recipeTable is where the data is
+    DatabaseHandler recipeTable;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
+
+        recipeTable = ((MyApplication)getApplication()).recipeTable;
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -49,16 +61,6 @@ public class Recipe extends AppCompatActivity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
     }
 
@@ -87,36 +89,54 @@ public class Recipe extends AppCompatActivity {
 
     /**
      * A placeholder fragment containing a simple view.
+     * The fragment contains the content of the recipe tab
      */
     public static class PlaceholderFragment extends Fragment {
         /**
          * The fragment argument representing the section number for this
          * fragment.
          */
-        private static final String ARG_SECTION_NUMBER = "section_number";
 
         public PlaceholderFragment() {
         }
+
+        private static final String ARG_RECIPE_NAME = "recipename";
+        private static final String ARG_EXTENT = "extent";
+        private static final String ARG_INGREDIENTS = "ingredients";
 
         /**
          * Returns a new instance of this fragment for the given section
          * number.
          */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
+        public static PlaceholderFragment newInstance(int sectionNumber, String recipeName, String extent, String ingredients) {
             PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+            //THE ARGUMENTS THAT YOU GIVE WITH CREATING THE FRAGMENT,
+            //TODO: extend with the other arguments
+            args.putString(ARG_RECIPE_NAME, recipeName);
+            args.putString(ARG_EXTENT, extent);
+            args.putString(ARG_INGREDIENTS, ingredients);
             fragment.setArguments(args);
             return fragment;
         }
 
-        //Probably the content goes below here
+
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
+
             View rootView = inflater.inflate(R.layout.fragment_recipe, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+
+            //Change the widgets in the tab
+            TextView vw_name = (TextView) rootView.findViewById(R.id.recipe_name);
+            vw_name.setText(getArguments().getString(ARG_RECIPE_NAME));
+
+            TextView vw_extent = (TextView) rootView.findViewById(R.id.extent);
+            vw_extent.setText(getArguments().getString(ARG_EXTENT));
+
+            TextView vw_ingredients = (TextView) rootView.findViewById(R.id.ingredients);
+            vw_ingredients.setText(getArguments().getString(ARG_INGREDIENTS));
+
             return rootView;
         }
     }
@@ -135,13 +155,16 @@ public class Recipe extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+
+            //The content of the recipe tab is loaded here
+            RecipeData recipe = recipeTable.getRecipe(position+1);
+            return PlaceholderFragment.newInstance(position, recipe.getName(), recipe.getType(), recipe.getIngredients());
         }
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
-            return 3;
+            // Show 4 total pages.
+            return 4;
         }
 
         @Override
@@ -153,6 +176,8 @@ public class Recipe extends AppCompatActivity {
                     return "SECTION 2";
                 case 2:
                     return "SECTION 3";
+                case 3:
+                    return "SECTION 4";
             }
             return null;
         }
