@@ -66,29 +66,41 @@ public class MyApplication extends Application {
         List<RecipeData> rc_burger = new ArrayList<RecipeData>();
         rc_burger.add(new RecipeData("Burger",
                 "Meat+",
-                "10g vegetables5mL water1 grain of salt",
-                "1. Take the massive piece of meat.2. Combine them.3. Add the rest.4. Eat!",
+                "10g vegetables\n" +
+                        "5mL water\n" +
+                        "1 grain of salt\n10g vegetables\n" +
+                        "5mL water\n" +
+                        "1 grain of salt\n10g vegetables\n" +
+                        "5mL water\n" +
+                        "1 grain of salt",
+                "1. Take the massive piece of meat.\n2. Combine them.\n3. Add the rest.\n4. Eat!\n1. Take the massive piece of meat.\n" +
+                        "2. Combine them.\n" +
+                        "3. Add the rest.\n" +
+                        "4. Eat!\n1. Take the massive piece of meat.\n" +
+                        "2. Combine them.\n" +
+                        "3. Add the rest.\n" +
+                        "4. Eat!",
                 "American|Lunch",
                 "imageref",
                 "2", "3", "2", "1", "2", "3", "2"));
         rc_burger.add(new RecipeData("Burger",
                 "Meat",
-                "10g vegetables5mL water1 grain of salt",
-                "1. Take the meat.2. Combine them.3. Add the rest.4. Eat!",
+                "10g vegetables\n5mL water\n1 grain of salt",
+                "1. Take the meat.\n2. Combine them.\n3. Add the rest.\n4. Eat!",
                 "American|Lunch",
                 "imageref",
                 "2", "3", "2", "1", "2", "3", "2"));
         rc_burger.add(new RecipeData("Burger",
                 "Vegetarian",
-                "10g vegetables5mL water1 grain of salt",
-                "1. Take the vegetables.2. Combine them.3. Add the rest.4. Eat!",
+                "10g vegetables\n5mL water\n1 grain of salt",
+                "1. Take the vegetables.\n2. Combine them.\n3. Add the rest.\n4. Eat!",
                 "American|Lunch",
                 "imageref",
                 "2", "3", "2", "1", "2", "3", "2"));
         rc_burger.add(new RecipeData("Burger",
                 "Vegan",
-                "1000g vegetables5mL water1 grain of salt",
-                "1. Take the vegetables.2. Combine them.3. Add the rest.4. Eat!",
+                "1000g vegetables\n5mL water\n1 grain of salt",
+                "1. Take the vegetables.\n2. Combine them.\n3. Add the rest.\n4. Eat!",
                 "American|Lunch",
                 "imageref",
                 "2", "3", "2", "1", "2", "3", "2"));
