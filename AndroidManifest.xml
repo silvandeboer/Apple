@@ -20,6 +20,41 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".PopupEnvironment"
+            android:theme="@style/AppTheme.customTheme">
+
+        </activity>
+
+        <activity android:name=".PopupCarbon"
+            android:theme="@style/AppTheme.customTheme">
+
+        </activity>
+
+        <activity android:name=".PopupDifficulty"
+            android:theme="@style/AppTheme.customTheme">
+
+        </activity>
+
+        <activity android:name=".PopupPrice"
+            android:theme="@style/AppTheme.customTheme">
+
+        </activity>
+
+        <activity android:name=".PopupWater"
+            android:theme="@style/AppTheme.customTheme">
+
+        </activity>
+
+        <activity android:name=".PopupTime"
+            android:theme="@style/AppTheme.customTheme">
+
+        </activity>
+
+        <activity android:name=".PopupRanking"
+            android:theme="@style/AppTheme.customTheme">
+
+        </activity>
+
     </application>
 
 </manifest>
