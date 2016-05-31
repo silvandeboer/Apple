@@ -20,9 +20,14 @@ import android.view.ViewGroup;
 import android.database.sqlite.*;
 
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.NumberPicker;
+import android.widget.RatingBar;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -162,25 +167,89 @@ public class Recipe extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
 
+            //create list with colors
+            Integer colorBack = null, colorTitle = null, colorHeader;
+            String ext = getArguments().getString(ARG_EXTENT);
+            if(ext.equals("Meat+")){
+                colorBack = getResources().getColor(R.color.colorTabMeatplusBack);
+                colorTitle = getResources().getColor(R.color.colorTabMeatplusTitle);
+                colorHeader = getResources().getColor(R.color.colorTabMeatplusHeader);
+            }
+            else if(ext.equals("Meat")){
+                colorBack = getResources().getColor(R.color.colorTabMeatBack);
+                colorTitle = getResources().getColor(R.color.colorTabMeatTitle);
+                colorHeader = getResources().getColor(R.color.colorTabMeatHeader);
+            }
+            else if(ext.equals("Vegetarian")){
+                colorBack = getResources().getColor(R.color.colorTabVegetarianBack);
+                colorTitle = getResources().getColor(R.color.colorTabVegetarianTitle);
+                colorHeader = getResources().getColor(R.color.colorTabVegetarianHeader);
+            }
+            else{
+                colorBack = getResources().getColor(R.color.colorTabVeganBack);
+                colorTitle = getResources().getColor(R.color.colorTabVeganTitle);
+                colorHeader = getResources().getColor(R.color.colorTabVeganHeader);
+            }
+            Log.w("TEST", getArguments().getString(ARG_EXTENT));
+
             View rootView = inflater.inflate(R.layout.fragment_recipe, container, false);
+
+            ScrollView scrView = (ScrollView) rootView.findViewById(R.id.scrollView);
+            scrView.setBackgroundColor(colorBack);
+
+            RelativeLayout relLay = (RelativeLayout) rootView.findViewById(R.id.relativeLayout);
+            relLay.setBackgroundColor(colorBack);
 
             //Change the widgets in the tab
             TextView vw_name = (TextView) rootView.findViewById(R.id.titleRecipe);
             vw_name.setText(getArguments().getString(ARG_EXTENT)+" "+getArguments().getString(ARG_RECIPE_NAME));
+            vw_name.setBackgroundColor(colorTitle);
 
             //Still missing
             //TextView vw_extent = (TextView) rootView.findViewById(R.id.extent);
             //vw_extent.setText(getArguments().getString(ARG_EXTENT));
 
+            TextView vw_infoheader = (TextView) rootView.findViewById(R.id.informationTitle);
+            vw_infoheader.setBackgroundColor(colorHeader);
+
+            TextView vw_ingredientsheader = (TextView) rootView.findViewById(R.id.ingredientsTitle);
+            vw_ingredientsheader.setBackgroundColor(colorHeader);
+
             TextView vw_ingredients = (TextView) rootView.findViewById(R.id.ingredients);
             vw_ingredients.setText(getArguments().getString(ARG_INGREDIENTS));
+
+            TextView vw_instructionsheader = (TextView) rootView.findViewById(R.id.instructionsTitle);
+            vw_instructionsheader.setBackgroundColor(colorHeader);
 
             TextView vw_instructions = (TextView) rootView.findViewById(R.id.instructions);
             vw_instructions.setText(getArguments().getString(ARG_INSTRUCTIONS));
 
+            ImageView vw_image = (ImageView) rootView.findViewById(R.id.imageRecipe);
+            vw_image.setImageDrawable(getResources().getDrawable(Integer.parseInt(getArguments().getString(ARG_IMAGE_REF))));
+
+            //Scores
+            RatingBar rb_environment = (RatingBar) rootView.findViewById(R.id.bar_environment);
+            rb_environment.setRating(Float.parseFloat(getArguments().getString(ARG_ENVIRONMENTAL_SCORE)));
+
+            RatingBar rb_water = (RatingBar) rootView.findViewById(R.id.bar_water);
+            rb_water.setRating(Float.parseFloat(getArguments().getString(ARG_WATERFP_SCORE)));
+
+            RatingBar rb_carbon = (RatingBar) rootView.findViewById(R.id.bar_carbon);
+            rb_carbon.setRating(Float.parseFloat(getArguments().getString(ARG_CARBONFP_SCORE)));
+
+            RatingBar rb_time = (RatingBar) rootView.findViewById(R.id.bar_time);
+            rb_time.setRating(Float.parseFloat(getArguments().getString(ARG_TIME_SCORE)));
+
+            RatingBar rb_difficulty = (RatingBar) rootView.findViewById(R.id.bar_difficulty);
+            rb_difficulty.setRating(Float.parseFloat(getArguments().getString(ARG_DIFFICULTY_SCORE)));
+
+            RatingBar rb_price = (RatingBar) rootView.findViewById(R.id.bar_price);
+            rb_price.setRating(Float.parseFloat(getArguments().getString(ARG_PRICE_SCORE)));
+
+            RatingBar rb_rating = (RatingBar) rootView.findViewById(R.id.bar_rating);
+            rb_rating.setRating(Float.parseFloat(getArguments().getString(ARG_RATING_SCORE)));
 
             //POP-UP'S FOR INFORMATION IN THE INFORMATION SECTION
-            //TODO: add buttons/images dependent on score
 
             environmentBtn = (ImageButton) rootView.findViewById(R.id.environmentBtn);
             environmentBtn.setOnClickListener(new View.OnClickListener() {
@@ -269,19 +338,5 @@ public class Recipe extends AppCompatActivity {
             return 4;
         }
 
-        @Override
-        public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case 0:
-                    return "SECTION 1";
-                case 1:
-                    return "SECTION 2";
-                case 2:
-                    return "SECTION 3";
-                case 3:
-                    return "SECTION 4";
-            }
-            return null;
-        }
     }
 }
