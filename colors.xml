@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="colorTabMeatplusBack">#ffb7b7</color>
+    <color name="colorTabMeatplusTitle">#ee6060</color>
+    <color name="colorTabMeatplusHeader">#ff0000</color>
+
+    <color name="colorTabMeatBack">#FFFFCC</color>
+    <color name="colorTabMeatTitle">#FFFF99</color>
+    <color name="colorTabMeatHeader">#FEEC00</color>
+
+    <color name="colorTabVegetarianBack">#DEF8C5</color>
+    <color name="colorTabVegetarianTitle">#CCFF99</color>
+    <color name="colorTabVegetarianHeader">#66FF33</color>
+
+    <color name="colorTabVeganBack">#D4E6F7</color>
+    <color name="colorTabVeganTitle">#99CCFF</color>
+    <color name="colorTabVeganHeader">#3399FF</color>
+</resources>
