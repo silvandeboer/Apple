@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash"
+    tools:context="atlassem4project.popup.MainActivity">
+
+    <Button
+        android:id="@+id/btnmeatplus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/action1"
+        android:layout_alignTop="@+id/btnmeat"
+        android:layout_toLeftOf="@+id/btnmeat"
+        android:layout_toStartOf="@+id/btnmeat" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/action2"
+        android:id="@+id/btnmeat"
+        android:layout_alignTop="@+id/btnvegetarian"
+        android:layout_toLeftOf="@+id/btnvegetarian"
+        android:layout_toStartOf="@+id/btnvegetarian" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/action3"
+        android:id="@+id/btnvegetarian"
+        android:layout_alignTop="@+id/btnvegan"
+        android:layout_toLeftOf="@+id/btnvegan"
+        android:layout_toStartOf="@+id/btnvegan" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/action4"
+        android:id="@+id/btnvegan"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Select your dinner preference"
+        android:id="@+id/textView5"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="72dp" />
+
+</RelativeLayout>
