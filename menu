@@ -1,0 +1,36 @@
+package atlassem4project.popup;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.widget.TextView;
+
+public class menu extends Activity {
+
+
+        @Override
+        protected void onCreate (Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_menu);
+            SharedPreferences pref = getSharedPreferences("meatPREF", Context.MODE_PRIVATE);
+            boolean meat_plus = pref.getBoolean("pref_meatplus", false);
+            boolean meat = pref.getBoolean("pref_meat", false);
+            boolean vegetarian = pref.getBoolean("pref_vegetarian", false);
+            boolean vegan = pref.getBoolean("pref_vegan", false);
+            if (meat_plus){
+                TextView view = (TextView) findViewById(R.id.textView);
+                view.setText(getString(R.string.action1));}
+            if (meat){
+                TextView view = (TextView) findViewById(R.id.textView);
+                view.setText(getString(R.string.action2));}
+            if (vegetarian){
+                TextView view = (TextView) findViewById(R.id.textView);
+                view.setText(getString(R.string.action3));}
+            if (vegan){
+                TextView view = (TextView) findViewById(R.id.textView);
+                view.setText(getString(R.string.action4));}
+            }
+
+    }
+
