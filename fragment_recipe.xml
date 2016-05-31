@@ -10,19 +10,22 @@ This describes the layout of the recipe activity. The actual content (text, etc)
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Recipe"
     tools:showIn="@layout/activity_recipe"
     android:background="#ffb7b7"
-    android:paddingLeft="5dp"
-    android:paddingRight="5dp">
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingBottom="60dp">
 
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -41,6 +44,8 @@ This describes the layout of the recipe activity. The actual content (text, etc)
         android:textSize="20dp"
         android:textColor="#000000"
         android:background="#ee6060"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
@@ -58,24 +63,24 @@ This describes the layout of the recipe activity. The actual content (text, etc)
         android:src="@drawable/imagerecipe"
         android:scaleType="fitXY"/>
 
-    <TextView
+    <!--TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/shortDescriptionRecipe"
+        android:text="Why is this still here???"
         android:id="@+id/description"
         android:background="#ee6060"
         android:layout_below="@+id/imageRecipe"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:textColor="#000000"
-        android:textSize="15dp" />
+        android:textSize="15dp" /-->
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/informationTitle"
         android:id="@+id/informationTitle"
-        android:layout_below="@id/description"
+        android:layout_below="@id/imageRecipe"
         android:layout_centerHorizontal="true"
         android:textColor="#ffffff"
         android:textSize="20dp"
@@ -223,6 +228,119 @@ This describes the layout of the recipe activity. The actual content (text, etc)
         android:layout_below="@id/instructionsTitle" />
 
 
+
+
+    <RatingBar
+        style="@style/foodRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bar_rating"
+        android:numStars="5"
+        android:isIndicator="true"
+        android:stepSize="1"
+        android:rating="3"
+        android:background="@null"
+        android:layout_alignStart="@id/information"
+        android:layout_alignBottom="@id/information"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="150dp"
+        android:layout_alignLeft="@id/information" />
+
+    <RatingBar
+        style="@style/stylepricebar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bar_price"
+        android:numStars="5"
+        android:isIndicator="true"
+        android:stepSize="1"
+        android:rating="3"
+        android:background="@null"
+        android:layout_alignStart="@id/information"
+        android:layout_alignBottom="@id/information"
+        android:layout_marginBottom="40dp"
+        android:layout_marginLeft="150dp"
+        android:layout_alignLeft="@id/information" />
+
+    <RatingBar
+        style="@style/styledifficultybar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bar_difficulty"
+        android:numStars="5"
+        android:isIndicator="true"
+        android:stepSize="1"
+        android:rating="3"
+        android:background="@null"
+        android:layout_alignStart="@id/information"
+        android:layout_alignBottom="@id/information"
+        android:layout_marginBottom="75dp"
+        android:layout_marginLeft="150dp"
+        android:layout_alignLeft="@id/information" />
+
+    <RatingBar
+        style="@style/styletimebar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bar_time"
+        android:numStars="5"
+        android:isIndicator="true"
+        android:stepSize="1"
+        android:rating="3"
+        android:background="@null"
+        android:layout_alignStart="@id/information"
+        android:layout_alignBottom="@id/information"
+        android:layout_marginBottom="110dp"
+        android:layout_marginLeft="150dp"
+        android:layout_alignLeft="@id/information" />
+
+    <RatingBar
+        style="@style/stylecarbonbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bar_carbon"
+        android:numStars="5"
+        android:isIndicator="true"
+        android:stepSize="1"
+        android:rating="3"
+        android:background="@null"
+        android:layout_alignStart="@id/information"
+        android:layout_alignBottom="@id/information"
+        android:layout_marginBottom="145dp"
+        android:layout_marginLeft="150dp"
+        android:layout_alignLeft="@id/information" />
+
+    <RatingBar
+        style="@style/stylewaterbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bar_water"
+        android:numStars="5"
+        android:isIndicator="true"
+        android:stepSize="1"
+        android:rating="3"
+        android:background="@null"
+        android:layout_alignStart="@id/information"
+        android:layout_alignBottom="@id/information"
+        android:layout_marginBottom="180dp"
+        android:layout_marginLeft="150dp"
+        android:layout_alignLeft="@id/information" />
+
+    <RatingBar
+        style="@style/styleenvironmentbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bar_environment"
+        android:numStars="5"
+        android:isIndicator="true"
+        android:stepSize="1"
+        android:rating="3"
+        android:background="@null"
+        android:layout_alignStart="@id/information"
+        android:layout_alignBottom="@id/information"
+        android:layout_marginBottom="215dp"
+        android:layout_marginLeft="150dp"
+        android:layout_alignLeft="@id/information" />
 
 
 
